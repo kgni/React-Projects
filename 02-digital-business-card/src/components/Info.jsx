@@ -6,7 +6,7 @@ export default function Info() {
 		<section className="info-section">
 			<img className="profile-img" src={ProfileImg} alt="Profile" />
 			<div className="info-text">
-				<div className="name">Karl Nielsen</div>
+				<h2 className="name">Karl Nielsen</h2>
 				<div className="position">Software Engineer</div>
 				<div className="website">www.mdia.dk</div>
 			</div>

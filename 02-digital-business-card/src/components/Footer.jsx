@@ -1,5 +1,13 @@
 import React from 'react';
 
 export default function Footer() {
-	return <h1>This is Footer</h1>;
+	return (
+		<footer className="card-footer">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</footer>
+	);
 }
