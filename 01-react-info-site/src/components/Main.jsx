@@ -1,4 +1,5 @@
 import React from 'react';
+import BgIcon from '../images/icon-bg.png';
 
 export function Main() {
 	return (
@@ -10,6 +11,7 @@ export function Main() {
 				<li>Has well over 100k starts on GitHub</li>
 				<li>Is maintained by Facebook</li>
 			</ul>
+			<img className="bg-icon" src={BgIcon} alt="" />
 		</main>
 	);
 }
