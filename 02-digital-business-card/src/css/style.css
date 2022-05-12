@@ -11,4 +11,86 @@ html {
 
 body {
 	background-color: #23252c;
+	color: #fff;
+}
+
+#root {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	padding-top: 8rem;
+}
+
+.card {
+	max-width: 320px;
+	background-color: #1a1b21;
+}
+
+/* info section */
+
+.info-section {
+	margin-bottom: 3.3rem;
+}
+
+.info-text {
+	padding: 2.1rem 3.5rem 0 3.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-bottom: 1.5rem;
+}
+
+.info-links {
+	padding: 0 3.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1.7rem;
+}
+
+.info-links > * {
+	flex: 1;
+}
+
+.email,
+.linkedin {
+	font-size: 1.4rem;
+	text-decoration: none;
+	text-align: center;
+	padding: 0.8rem;
+	font-weight: 600;
+	border-radius: 5px;
+}
+
+.email {
+	background-color: #fff;
+	color: #374151;
+}
+
+.linkedin {
+	background-color: #5093e2;
+	color: #fff;
+}
+.profile-img {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	width: 100%;
+}
+
+.name {
+	font-size: 2.5rem;
+	font-weight: bold;
+	margin-bottom: 0.6rem;
+}
+
+.position {
+	font-size: 1.2rem;
+	color: #f3bf99;
+	margin-bottom: 0.8rem;
+}
+
+.website {
+	font-size: 1rem;
+	color: #f5f5f5;
 }
