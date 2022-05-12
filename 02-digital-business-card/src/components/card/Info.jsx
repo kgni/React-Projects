@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileImg from '../images/profile-img.jpg';
+import ProfileImg from '../../images/profile-img.jpg';
 
 export default function Info() {
 	return (
@@ -8,7 +8,9 @@ export default function Info() {
 			<div className="info-text">
 				<h2 className="name">Karl Nielsen</h2>
 				<div className="position">Software Engineer</div>
-				<div className="website">www.mdia.dk</div>
+				<a target="_blank" href="https://www.mdia.dk" className="website">
+					www.mdia.dk
+				</a>
 			</div>
 			<div className="info-links">
 				<a href="/" className="email">
