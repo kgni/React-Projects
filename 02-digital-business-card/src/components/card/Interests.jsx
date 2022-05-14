@@ -5,8 +5,8 @@ export default function Interests() {
 		<section className="interests-section">
 			<h3 className="interests-title">Interests</h3>
 			<p className="interests-text">
-				Food expert. Music scholar. Reader. Internet fanatic. Bacon buff.
-				Entrepreneur. Travel geek. Pop culture ninja. Coffee fanatic.
+				Sed elementum lacus eu neque semper sodales. Etiam nec nisl diam. Cras
+				maximus, felis at maximus.
 			</p>
 		</section>
 	);
