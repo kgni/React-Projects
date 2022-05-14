@@ -41,7 +41,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	margin-bottom: 1.5rem;
+	margin-bottom: 2rem;
 }
 
 .info-links {
@@ -50,6 +50,13 @@ body {
 	align-items: center;
 	justify-content: center;
 	gap: 1.7rem;
+}
+
+.info-links a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.8rem;
 }
 
 .info-links > * {
@@ -131,4 +138,9 @@ body {
 }
 .card-footer ul {
 	list-style: none;
+	display: flex;
+	justify-content: center;
+	font-size: 2.4rem;
+	gap: 4.8rem;
+	color: gray;
 }
