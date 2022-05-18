@@ -1,17 +1,15 @@
-import CardImage from '../../img/katie-zaferes.png';
-import StarIcon from '../../img/star.png';
+import './CardSection.css';
 
 function Card(props) {
 	return (
 		<div className="card">
-			<div className="tag">{props.tag}</div>
-			<img src={CardImage} alt="" />
+			<img className="star" src={`./img/${props.img}`} alt="" />
 			<div className="card-rating">
-				<img src={StarIcon} alt="" />
+				<img src="img/star.png" alt="" />
 				<span className="rating">{props.rating}</span>
 				<span className="rating-count">({props.reviewCount})</span>
 				<span className="dot"></span>
-				<div className="country">{props.country}</div>
+				<div className="country">{props.location}</div>
 			</div>
 			<div className="card-description">
 				<span>{props.title}</span>
