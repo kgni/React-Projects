@@ -1,0 +1,10 @@
+.people-section {
+	display: flex;
+	justify-content: center;
+}
+
+.people-section img {
+	padding-top: 26px;
+	width: 400px;
+	margin-bottom: 32px;
+}
