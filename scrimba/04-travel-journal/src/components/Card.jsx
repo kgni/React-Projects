@@ -1,13 +1,16 @@
 import React from 'react';
+import locationIcon from '../images/locationIcon.svg';
 
 function Card(props) {
 	return (
 		<div className="card">
-			<img src={props.imageUrl} alt="" />
+			<img className="card-img" src={props.imageUrl} alt="" />
 			<div className="info-container">
 				<div className="info--location">
-					<img src="" alt="" />
-					<div className="country">{props.location}</div>
+					<div className="country">
+						<img src={locationIcon} alt="" />
+						<div className="country--name">{props.location}</div>
+					</div>
 					<a href={props.googleMapsUrl} className="google-maps-link">
 						View on Google Maps
 					</a>
