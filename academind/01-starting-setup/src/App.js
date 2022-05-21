@@ -1,6 +1,6 @@
-import ExpenseItem from './components/ExpenseItem';
-import expenses from './expenses';
-import Card from './components/Card';
+import ExpenseItem from './components/Expenses/ExpenseItem';
+import expenses from './data/expenses';
+import Card from './components/UI/Card';
 
 function App() {
 	const expensesItems = expenses.map((item) => {
