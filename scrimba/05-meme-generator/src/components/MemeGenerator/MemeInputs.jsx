@@ -3,7 +3,7 @@ import './MemeInputs.css';
 const MemeInputs = () => {
 	return (
 		<>
-			<form className="input-form">
+			<form action="/" method="GET" className="input-form">
 				<div className="inputs">
 					<input placeholder="Top text..." type="text" />
 					<input placeholder="Bottom text..." type="text" />

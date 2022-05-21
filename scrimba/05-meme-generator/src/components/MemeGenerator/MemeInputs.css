@@ -17,6 +17,7 @@
 	height: 100%;
 	font-size: 12px;
 	padding: 10px;
+	border: 2px solid #d5d4d8;
 }
 
 .inputs > *::placeholder {
@@ -32,4 +33,6 @@ button {
 	border-radius: 5px;
 	padding: 10px;
 	border: none;
+	cursor: pointer;
+	font-family: 'Karla', sans-serif;
 }
