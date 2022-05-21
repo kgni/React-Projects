@@ -1,0 +1,21 @@
+.header {
+	background: linear-gradient(90deg, #672280 1.18%, #a626d3 100%);
+	padding: 20px;
+	color: #fff;
+}
+
+.title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 21px;
+	gap: 15px;
+}
+
+.title__logo {
+	width: 60px;
+}
+
+.title__text {
+	text-align: left;
+}

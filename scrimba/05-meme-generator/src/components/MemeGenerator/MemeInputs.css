@@ -1,0 +1,35 @@
+.input-form {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 47px;
+}
+
+.inputs {
+	display: flex;
+	gap: 25px;
+	height: 35px;
+	margin-bottom: 15px;
+}
+
+.inputs > * {
+	flex-grow: 1;
+	border-radius: 5px;
+	height: 100%;
+	font-size: 12px;
+	padding: 10px;
+}
+
+.inputs > *::placeholder {
+	font-size: 12px;
+	font-family: 'Karla', sans-serif;
+}
+
+button {
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	background: linear-gradient(90.41deg, #711f8d 1.14%, #a818da 100%);
+	border-radius: 5px;
+	padding: 10px;
+	border: none;
+}
