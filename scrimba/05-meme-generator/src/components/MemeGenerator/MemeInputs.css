@@ -36,3 +36,7 @@ button {
 	cursor: pointer;
 	font-family: 'Karla', sans-serif;
 }
+
+img {
+	width: 100%;
+}
