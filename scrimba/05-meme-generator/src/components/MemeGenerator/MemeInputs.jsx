@@ -3,17 +3,25 @@ import './MemeInputs.css';
 import memeData from '../../memeData';
 
 const MemeInputs = () => {
-	const memesArray = memeData.data.memes;
-	const randNum = Math.floor(Math.random() * memesArray.length);
-	const [memeImg, setMemeImg] = React.useState(
-		memeData.data.memes[randNum].url
-	);
+	const [allMemeImages, setAllMemeImages] = React.useState(memeData.data.memes);
+
+	const randNum = Math.floor(Math.random() * allMemeImages.length);
+
+	const [meme, setMeme] = React.useState({
+		topText: '',
+		bottomText: '',
+		randomImage: allMemeImages[randNum].url,
+	});
+
 	function getRandMeme() {
-		const randNum = Math.floor(Math.random() * memesArray.length);
-		console.log(randNum);
-		const url = memesArray[randNum].url;
-		console.log(url);
-		setMemeImg(url);
+		const randNum = Math.floor(Math.random() * allMemeImages.length);
+		const url = allMemeImages[randNum].url;
+		setMeme((prevMeme) => {
+			return {
+				...prevMeme,
+				randomImage: url,
+			};
+		});
 	}
 	return (
 		<>
@@ -27,7 +35,7 @@ const MemeInputs = () => {
 				</button>
 			</div>
 			<div className="meme-output">
-				<img src={memeImg} alt="" className="meme-output__img" />
+				<img src={meme.randomImage} alt="" className="meme-output__img" />
 			</div>
 		</>
 	);
