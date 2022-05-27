@@ -1,16 +1,19 @@
 import React from 'react';
 import './MemeInputs.css';
-import memeData from '../../memeData';
 
 const MemeInputs = () => {
-	const [allMemeImages, setAllMemeImages] = React.useState(memeData.data.memes);
-
-	const randNum = Math.floor(Math.random() * allMemeImages.length);
+	const [allMemes, setAllMemes] = React.useState([]);
 
 	const [meme, setMeme] = React.useState({
 		topText: '',
 		bottomText: '',
-		randomImage: allMemeImages[randNum].url,
+		randomImage: 'http://i.imgflip.com/1bij.jpg',
+	});
+
+	React.useEffect(() => {
+		fetch('https://api.imgflip.com/get_memes')
+			.then((res) => res.json())
+			.then((data) => setAllMemes(data.data.memes), []);
 	});
 
 	function handleChange(event) {
@@ -24,8 +27,8 @@ const MemeInputs = () => {
 	}
 
 	function getRandMeme() {
-		const randNum = Math.floor(Math.random() * allMemeImages.length);
-		const url = allMemeImages[randNum].url;
+		const randNum = Math.floor(Math.random() * allMemes.length);
+		const url = allMemes[randNum].url;
 		setMeme((prevMeme) => {
 			return {
 				...prevMeme,
