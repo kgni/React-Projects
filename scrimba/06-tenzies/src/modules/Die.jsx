@@ -1,15 +1,15 @@
 import './Die.css';
 
 export default function Die(props) {
-	const checked = {
-		backgroundColor: '#99f2a2',
+	const style = {
+		backgroundColor: props.isLocked ? '#99f2a2' : '#fff',
 	};
 
 	return (
 		<div
 			onClick={() => props.setIsLocked(props.id)}
 			className="die"
-			style={props.isLocked ? checked : { backgroundColor: 'white' }}
+			style={style}
 		>
 			{props.value}
 		</div>

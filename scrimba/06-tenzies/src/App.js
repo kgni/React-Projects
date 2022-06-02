@@ -21,16 +21,7 @@ export default function App() {
 	function setIsLocked(id) {
 		setDice((oldDice) => {
 			return oldDice.map((dice) => {
-				if (dice.id === id) {
-					return {
-						...dice,
-						isLocked: !dice.isLocked,
-					};
-				} else {
-					return {
-						...dice,
-					};
-				}
+				return dice.id === id ? { ...dice, isLocked: !dice.isLocked } : dice;
 			});
 		});
 	}
@@ -39,16 +30,7 @@ export default function App() {
 		setDice((oldDice) => {
 			return oldDice.map((dice) => {
 				const value = Math.ceil(Math.random() * 6);
-				if (!dice.isLocked) {
-					return {
-						...dice,
-						value: value,
-					};
-				} else {
-					return {
-						...dice,
-					};
-				}
+				return !dice.isLocked ? { ...dice, value: value } : dice;
 			});
 		});
 	}
