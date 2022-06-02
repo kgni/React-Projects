@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Die from './modules/Die';
+import Confetti from 'react-confetti';
 
 export default function App() {
 	const [dice, setDice] = useState(allNewDice());
@@ -66,6 +67,14 @@ export default function App() {
 
 	return (
 		<main>
+			{isGameOver && <Confetti />}
+			{isGameOver && <div className="win-modal">YOU WIN!</div>}
+
+			<h1 className="title">Tenzies</h1>
+			<p className="instructions">
+				Roll until all dice are the same. Click each die to freeze it at its
+				current value between rolls.
+			</p>
 			<div className="die-container">{dieArray}</div>
 
 			{isGameOver ? (
