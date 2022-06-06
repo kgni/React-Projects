@@ -3,8 +3,22 @@ import Die from './modules/Die';
 import Confetti from 'react-confetti';
 
 export default function App() {
-	const [dice, setDice] = useState(allNewDice());
+	const [dice, setDice] = useState(
+		() => JSON.parse(localStorage.getItem('dice')) || allNewDice()
+	);
 	const [isGameOver, setIsGameOver] = useState(false);
+
+	const [rolls, setRolls] = useState(
+		() => JSON.parse(localStorage.getItem('rolls')) || 0
+	);
+
+	const [highscore, setHighScore] = useState(
+		() => JSON.parse(localStorage.getItem('highscore')) || 0
+	);
+
+	const [gamesPlayed, setGamesPlayed] = useState(
+		() => JSON.parse(localStorage.getItem('gamesplayed')) || 0
+	);
 
 	function allNewDice() {
 		const newDice = [];
@@ -34,14 +48,37 @@ export default function App() {
 				return !dice.isLocked ? { ...dice, value: value } : dice;
 			});
 		});
+
+		setRolls((oldRolls) => {
+			return (oldRolls = oldRolls + 1);
+		});
+
+		if (gamesPlayed === 0) {
+			setHighScore((oldHighScore) => (oldHighScore = oldHighScore + 1));
+		}
 	}
 
 	useEffect(() => {
+		localStorage.setItem('rolls', JSON.stringify(rolls));
+
+		localStorage.setItem('highscore', JSON.stringify(highscore));
+	}, [rolls]);
+
+	useEffect(() => {
+		localStorage.setItem('dice', JSON.stringify(dice));
+		localStorage.setItem('gamesplayed', JSON.stringify(gamesPlayed));
 		if (
 			dice.every((el) => el.isLocked) &&
 			dice.every((el) => el.value === dice[0].value)
 		) {
 			setIsGameOver(true);
+			setGamesPlayed((oldGamesPlayed) => (oldGamesPlayed = oldGamesPlayed + 1));
+			localStorage.setItem('gamesplayed', JSON.stringify(gamesPlayed));
+
+			if (rolls < highscore) {
+				setHighScore((oldHighScore) => (oldHighScore = rolls));
+				localStorage.setItem('highscore', JSON.stringify(highscore));
+			}
 		} else {
 			setIsGameOver(false);
 		}
@@ -58,6 +95,7 @@ export default function App() {
 			});
 		}
 		setIsGameOver(false);
+		setRolls(0);
 		return newDice;
 	}
 
@@ -65,10 +103,20 @@ export default function App() {
 		<Die {...el} setIsLocked={setIsLocked} key={el.id} />
 	));
 
+	const style = {
+		color: rolls < highscore ? 'green' : 'red',
+		fontWeight: 'bold',
+	};
+
 	return (
 		<main>
 			{isGameOver && <Confetti />}
 			{isGameOver && <div className="win-modal">YOU WIN!</div>}
+
+			<span className="rolls">
+				Rolls: <span style={style}>{rolls}</span>
+			</span>
+			<span className="lowest-rolls">Lowest rolls: {highscore}</span>
 
 			<h1 className="title">Tenzies</h1>
 			<p className="instructions">
