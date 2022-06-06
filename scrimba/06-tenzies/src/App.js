@@ -117,22 +117,21 @@ export default function App() {
 		return newDice;
 	}
 
-	const dieArray = dice.map((el) => (
-		<Die {...el} setIsLocked={setIsLocked} key={el.id} />
-	));
-
-	const style = {
-		color: rolls < highscore ? 'green' : 'red',
-		fontWeight: 'bold',
-	};
-
 	return (
 		<main>
 			{isGameOver && <Confetti />}
 			{isGameOver && <div className="win-modal">YOU WIN!</div>}
 			<div className="container">
 				<span className="rolls">
-					Rolls: <span style={style}>{rolls}</span>
+					Rolls:{' '}
+					<span
+						style={{
+							color: rolls < highscore ? 'green' : 'red',
+							fontWeight: 'bold',
+						}}
+					>
+						{rolls}
+					</span>
 				</span>
 				<span className="lowest-rolls">
 					Lowest rolls: <span style={{ fontWeight: 'bold' }}>{highscore}</span>
@@ -143,7 +142,11 @@ export default function App() {
 					Roll until all dice are the same. Click each die to freeze it at its
 					current value between rolls.
 				</p>
-				<div className="die-container">{dieArray}</div>
+				<div className="die-container">
+					{dice.map((el) => (
+						<Die {...el} setIsLocked={setIsLocked} key={el.id} />
+					))}
+				</div>
 
 				{isGameOver ? (
 					<button onClick={() => setDice(restartGame())} className="roll-btn">
