@@ -1,13 +1,10 @@
-.online-experiences {
-	padding: 0 2.4rem;
-}
-
 h2 {
 	margin-bottom: 16px;
-	font-size: 2.4rem;
+	font-size: 36px;
 }
 
 p {
+	font-size: 16px;
 	line-height: 1.5;
-	width: 45ch;
+	width: 35ch;
 }
