@@ -22,17 +22,20 @@ function App() {
 		setExpensesData((prevExpenses) => [expense, ...prevExpenses]);
 	};
 
-	console.log(filteredExpenses.length);
+	let expensesContent = <p className="no-expenses">No expenses found.</p>;
+
+	if (filteredExpenses.length > 0) {
+		expensesContent = filteredExpenses.map((expense) => (
+			<ExpenseItem key={expense.id} {...expense} />
+		));
+	}
+
 	return (
 		<div className="app-container">
 			<NewExpense onAddExpense={addExpenseHandler} />
 			<Card className="card-container">
 				<ExpensesFilter filterYear={filterYear} setFilterYear={setFilterYear} />
-				{filteredExpenses.length === 0 && <p>No expenses found.</p>}
-				{filteredExpenses.length > 0 &&
-					filteredExpenses.map((expense) => (
-						<ExpenseItem key={expense.id} {...expense} />
-					))}
+				{expensesContent}
 			</Card>
 		</div>
 	);
