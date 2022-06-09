@@ -5,6 +5,7 @@ const ExpenseForm = (props) => {
 	const [enteredTitle, setEnteredTitle] = useState('');
 	const [enteredAmount, setEnteredAmount] = useState('');
 	const [enteredDate, setEnteredDate] = useState('');
+	const [open, setOpen] = useState(false);
 
 	// you can also add every single value to 1 state in an object. Keep in mind, when updating this state using our setter function, you have to update the entire object, where you are spreading the entire object first, and the updating the values that needs to be updating.
 	const [formData, setFormData] = useState({
@@ -23,6 +24,10 @@ const ExpenseForm = (props) => {
 			};
 		});
 	};
+
+	function clickOpenHandler() {
+		setOpen((prevData) => !prevData);
+	}
 
 	const amountChangeHandler = (event) => {
 		setEnteredAmount(event.target.value);
@@ -59,44 +64,56 @@ const ExpenseForm = (props) => {
 		setEnteredTitle('');
 		setEnteredAmount('');
 		setEnteredDate('');
+		setOpen((prevData) => !prevData);
 	};
 
+	if (open) {
+		return (
+			<form onSubmit={submitHandler} action="">
+				<div className="new-expense__controls">
+					<div className="new-expense__control">
+						<label htmlFor="">Title</label>
+						<input
+							value={enteredTitle}
+							onChange={titleChangeHandler}
+							type="text"
+						/>
+					</div>
+					<div className="new-expense__control">
+						<label htmlFor="">Amount</label>
+						<input
+							value={enteredAmount}
+							onChange={amountChangeHandler}
+							type="number"
+							min="0.01"
+							step="0.01"
+						/>
+					</div>
+					<div className="new-expense__control">
+						<label htmlFor="">Date</label>
+						<input
+							value={enteredDate}
+							onChange={dateChangeHandler}
+							type="date"
+							min="2019-01-01"
+							max="2022-12-31"
+						/>
+					</div>
+				</div>
+				<div className="new-expense__actions">
+					<button onClick={clickOpenHandler}>Cancel</button>
+					<button type="submit">Add Expense</button>
+				</div>
+			</form>
+		);
+	}
+
 	return (
-		<form onSubmit={submitHandler} action="">
-			<div className="new-expense__controls">
-				<div className="new-expense__control">
-					<label htmlFor="">Title</label>
-					<input
-						value={enteredTitle}
-						onChange={titleChangeHandler}
-						type="text"
-					/>
-				</div>
-				<div className="new-expense__control">
-					<label htmlFor="">Amount</label>
-					<input
-						value={enteredAmount}
-						onChange={amountChangeHandler}
-						type="number"
-						min="0.01"
-						step="0.01"
-					/>
-				</div>
-				<div className="new-expense__control">
-					<label htmlFor="">Date</label>
-					<input
-						value={enteredDate}
-						onChange={dateChangeHandler}
-						type="date"
-						min="2019-01-01"
-						max="2022-12-31"
-					/>
-				</div>
-			</div>
-			<div className="new-expense__actions">
-				<button type="submit">Add Expense</button>
-			</div>
-		</form>
+		<div className="new-expense__actions">
+			<button onClick={clickOpenHandler} type="submit">
+				Add Expense
+			</button>
+		</div>
 	);
 };
 
