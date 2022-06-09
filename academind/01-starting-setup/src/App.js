@@ -4,6 +4,7 @@ import DUMMY_EXPENSES from './data/DUMMY_EXPENSES';
 import Card from './components/UI/Card';
 import NewExpense from './components/NewExpense/NewExpense';
 import ExpensesFilter from './components/Expenses/ExpensesFilter';
+import ExpensesList from './components/Expenses/ExpensesList';
 
 function App() {
 	const [expensesData, setExpensesData] = useState(DUMMY_EXPENSES);
@@ -35,7 +36,7 @@ function App() {
 			<NewExpense onAddExpense={addExpenseHandler} />
 			<Card className="card-container">
 				<ExpensesFilter filterYear={filterYear} setFilterYear={setFilterYear} />
-				{expensesContent}
+				<ExpensesList items={filteredExpenses} />
 			</Card>
 		</div>
 	);
