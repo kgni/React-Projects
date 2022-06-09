@@ -7,6 +7,7 @@ const ChartBar = (props) => {
 	}
 	return (
 		<div className="chart-bar">
+			{/* <div className="chart-bar__value">{props.value}</div> */}
 			<div className="chart-bar__inner">
 				<div
 					style={{ height: barFillHeight }}
