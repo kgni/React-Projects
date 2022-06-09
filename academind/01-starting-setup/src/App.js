@@ -25,8 +25,10 @@ function App() {
 	return (
 		<div className="app-container">
 			<NewExpense onAddExpense={addExpenseHandler} />
-			<ExpensesFilter setFilterYear={setFilterYear} />
-			<Card className="card-container">{expensesItems}</Card>
+			<Card className="card-container">
+				<ExpensesFilter filterYear={filterYear} setFilterYear={setFilterYear} />
+				{expensesItems}
+			</Card>
 		</div>
 	);
 }
