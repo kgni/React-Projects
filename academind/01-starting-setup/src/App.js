@@ -24,14 +24,6 @@ function App() {
 		setExpensesData((prevExpenses) => [expense, ...prevExpenses]);
 	};
 
-	let expensesContent = <p className="no-expenses">No expenses found.</p>;
-
-	if (filteredExpenses.length > 0) {
-		expensesContent = filteredExpenses.map((expense) => (
-			<ExpenseItem key={expense.id} {...expense} />
-		));
-	}
-
 	return (
 		<div className="app-container">
 			<NewExpense onAddExpense={addExpenseHandler} />
