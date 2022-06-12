@@ -5,10 +5,15 @@ import UserList from './components/User/UserList';
 const App = () => {
 	const [users, setUsers] = useState([]);
 	console.log(users);
+	function deleteUser(userId) {
+		setUsers((prevUsers) => {
+			return prevUsers.filter((user) => user.id !== userId);
+		});
+	}
 	return (
 		<div>
 			<UserInput setUsers={setUsers} />
-			<UserList users={users} />
+			<UserList deleteUser={deleteUser} users={users} />
 		</div>
 	);
 };

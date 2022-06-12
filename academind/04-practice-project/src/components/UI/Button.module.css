@@ -1,0 +1,13 @@
+button {
+	background-color: black;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: white;
+	color: black;
+}
