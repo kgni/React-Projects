@@ -11,10 +11,10 @@ const App = () => {
 		});
 	}
 	return (
-		<div>
+		<>
 			<UserInput setUsers={setUsers} />
 			<UserList deleteUser={deleteUser} users={users} />
-		</div>
+		</>
 	);
 };
 

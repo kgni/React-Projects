@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Button from '../UI/Button';
 import ErrorModal from '../UI/ErrorModal';
 import Card from '../UI/Card';
@@ -6,14 +6,16 @@ import styles from './UserInput.module.css';
 import { nanoid } from 'nanoid';
 
 const UserInput = (props) => {
-	const [userName, setUserName] = useState('');
-	const [age, setAge] = useState('');
+	const userNameInputRef = useRef();
+	const ageInputRef = useRef();
+
 	const [error, setError] = useState();
-	console.log(userName, age);
 
 	function onSubmit(event) {
 		event.preventDefault();
-		if (age.trim().length === 0 || userName.trim().length === 0) {
+		const enteredUserName = userNameInputRef.current.value;
+		const enteredAge = ageInputRef.current.value;
+		if (enteredAge.trim().length === 0 || enteredUserName.trim().length === 0) {
 			setError({
 				title: 'Invalid input',
 				message: 'Please enter a valid name and age (non empty values)',
@@ -21,7 +23,7 @@ const UserInput = (props) => {
 			return;
 		}
 
-		if (Number(age) < 1) {
+		if (Number(enteredAge) < 1) {
 			setError({
 				title: 'Invalid age',
 				message: 'Please enter a valid age. Age cannot be below 1',
@@ -29,18 +31,16 @@ const UserInput = (props) => {
 			return;
 		}
 		props.setUsers((prevUsers) => {
-			return [{ userName: userName, age: age, id: nanoid() }, ...prevUsers];
+			return [
+				{ userName: enteredUserName, age: enteredAge, id: nanoid() },
+				...prevUsers,
+			];
 		});
-		setUserName('');
-		setAge('');
+		// resetting the input fields after submit (this is done this way, because we are using refs. If we were using state, we would then set our state to be empty strings, and then pass our state as the value attribute to our inputs.)
+		userNameInputRef.current.value = '';
+		ageInputRef.current.value = '';
 	}
 
-	function handleUserNameChange(event) {
-		setUserName(event.target.value);
-	}
-	function handleAgeChange(event) {
-		setAge(event.target.value);
-	}
 	return (
 		<>
 			{error && (
@@ -53,19 +53,9 @@ const UserInput = (props) => {
 			<Card className={styles.input}>
 				<form onSubmit={onSubmit} action="/">
 					<label htmlFor="username">Username</label>
-					<input
-						value={userName}
-						onChange={handleUserNameChange}
-						id="username"
-						type="text"
-					/>
+					<input id="username" type="text" ref={userNameInputRef} />
 					<label htmlFor="age">Age (Years)</label>
-					<input
-						value={age}
-						onChange={handleAgeChange}
-						id="age"
-						type="number"
-					/>
+					<input id="age" type="number" ref={ageInputRef} />
 					<Button type="submit">Add User</Button>
 				</form>
 			</Card>
