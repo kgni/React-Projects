@@ -11,7 +11,7 @@ const Nav = (props) => {
 				<div className={styles.cart}>
 					<FontAwesomeIcon icon={faCartShopping} onClick={props.onClick} />
 					<h3 onClick={props.onClick}>Your Cart</h3>
-					<span onClick={props.onClick}>{props.itemCount}</span>
+					<span onClick={props.onClick}>{props.cartState.totalCount}</span>
 				</div>
 			</nav>
 		</div>
